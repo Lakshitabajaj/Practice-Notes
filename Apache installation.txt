@@ -1,0 +1,61 @@
+Apache is an open source web server that’s available for Linux servers free of charge.
+
+########
+
+Apache Installation :
+Step 1. Installing apache : 
+        sudo apt update
+		sudo apt install apache2
+		
+Step 2. Adjusting the firewall:
+		sudo ufw app list
+		
+		sudo ufw status 
+		  - error : inactive (ufw not installed)
+		
+		sudo apt-get install ufw
+		sudo ufw enable
+		
+		sudo ufw status 
+		    output : active
+		
+		
+Step 3. Checking your web browser:
+		sudo systemctl status apache2
+			error : System has not been booted with systemd as init system (PID 1). Can't operate.
+                    Failed to connect to bus: Host is down
+
+			solution : My system is using SysVinit as the init system.So, Apache service using commands like service apache2 start, service apache2 stop, and service apache2 status
+			
+		service apache2 start
+			output	- Starting Apache httpd web server apache2  
+		service apache2 status
+			output -  apache2 is running
+			
+		hostname -I
+		  output : 172.29.203.108
+		  
+		 
+		When you have your server’s IP address, enter it into your browser’s address bar:
+			http://172.29.203.108
+		You should see the default Ubuntu 20.04 Apache web page.
+		
+		
+############################
+
+
+Basic commands to manage the apache process:
+
+1. To stop your web server, type:
+		service apache2 stop
+
+2. To start the web server when it is stopped, type:
+		service apache2 start
+		
+3. To stop and then start the service again, type:
+		service apache2 restart
+		
+4. Simply making configuration changes, Apache can often reload without dropping connections. 
+   To do this, use this command:
+		service apache2 reload
+	
