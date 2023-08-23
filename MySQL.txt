@@ -1,4 +1,70 @@
-MySQL:
- 
- 1. Install MySQLin Ubuntu:
-			- 
+MySQL: MySQL is an open-source relational database management system (RDBMS) that is widely used for creating, managing, and manipulating structured data. It's one of the most popular database systems and is often used for various web applications, business systems, and data-driven applications. MySQL is known for its speed, reliability, and ease of use.
+
+################################################
+
+ 1. * MySQL Installation in Ubuntu *
+			
+	Step 1. Update Package List:
+			- apt update
+	Step 2. Install MySQL:
+			- sudo apt install mysql-server
+	Step 3. Start and Enable MySQL:
+			- sudo service mysql start
+		* You can also enable it to start on boot:
+			*- sudo systemctl enable mysql
+	Step 4. Secure MySQL Installation: 
+			- sudo mysql_secure_installation
+	Step 5. Log into MySQL:
+			- mysql -u root -p
+
+#############################################
+
+2. * Create Database and Table in MySQL *
+	
+	Step 1. Create a Database and Table:
+CREATE DATABASE mydb;
+USE mydb;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL
+);
+
+	Step 2. SHOW TABLES:
+SHOW TABLES;
+	or
+DESCRIBE table_name;
+
+	Step 3. Insert Data into the Table:
+INSERT INTO users (username, email) VALUES ('john_doe', 'john@example.com');
+
+	Step 4. Query Data:
+SELECT * FROM users;
+
+
+#################################################
+
+3. * MySQL Uninstallation in Ubuntu *
+
+	Step 1.   Stop MySQL:
+			- sudo service mysql stop
+	Step 2. Uninstall MySQL Packages:
+			- sudo apt purge mysql-server mysql-client mysql-common mysql-server-core-* mysql-client-core-*
+	Step 3. Remove Configuration Files:
+			- sudo rm -rf /etc/mysql /var/lib/mysql
+	Step 4. Clean Up Dependencies:
+			- sudo apt autoremove
+	Step 5. Remove MySQL User and Group:
+			- sudo deluser mysql
+			- sudo delgroup mysql
+	Step 6. Remove MySQL Data and Configuration Directories:
+			- sudo rm -rf /var/lib/mysql /etc/mysql
+	Step 7. Clean Cache:
+			- sudo apt clean
+	step 8. Verify Removal (Optional):
+			- dpkg -l | grep mysql
+##############################################
+
+
+* NOTE: Use 'sudo' before the commands only when the existing user is not a root user. * 
